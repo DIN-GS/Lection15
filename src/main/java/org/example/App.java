@@ -3,6 +3,8 @@ package org.example;
 
 import java.time.DayOfWeek;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Hello world!
@@ -32,36 +34,18 @@ public class App
         oneToNum.accept(6);
         System.out.println();
 
-        Supplier<Integer> dayOfWeekSupplier = () -> {
+        Supplier<DayOfWeek> dayOfWeekSupplier = () -> {
 
-            int n = Calendar.DAY_OF_WEEK;
+            Date today = new Date();
+            Integer dayOfWeek = today.getDay();
+            if (dayOfWeek == 0) return DayOfWeek.SUNDAY;
+            else if (dayOfWeek == 1)  return DayOfWeek.MONDAY;
+            else if (dayOfWeek == 2) return DayOfWeek.TUESDAY;
+            else if (dayOfWeek == 3) return DayOfWeek.WEDNESDAY;
+            else if (dayOfWeek == 4) return DayOfWeek.THURSDAY;
+            else if (dayOfWeek == 5) return DayOfWeek.FRIDAY;
+            else return DayOfWeek.SATURDAY;
 
-            /*switch (n){
-                case 0:
-                    return DayOfWeek.SUNDAY;
-                    break;
-                case 1:
-                    return DayOfWeek.MONDAY;
-                    break;
-                case 2:
-                    return DayOfWeek.TUESDAY;
-                    break;
-                case 3:
-                    return DayOfWeek.WEDNESDAY;
-                    break;
-                case 4:
-                    return DayOfWeek.THURSDAY;
-                    break;
-                case 5:
-                    return DayOfWeek.FRIDAY;
-                    break;
-                case 6:
-                    return DayOfWeek.SATURDAY;
-                    break;
-                default:
-                    return DayOfWeek.SATURDAY;
-            }*/
-            return n;
         };
         System.out.println(dayOfWeekSupplier.get());
 
